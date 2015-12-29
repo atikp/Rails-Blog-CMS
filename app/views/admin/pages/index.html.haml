@@ -3,15 +3,15 @@
 %table.table
   %thead
     %tr
-      %th Title
-      %th Body
-      %th Slug
+      %th Title 
+      %th Body 
+      %th Slug 
       %th
       %th
       %th
 
   %tbody
-    - @pages.each do |page|
+    -@pages.each do |page|
       %tr
         %td= link_to page.title, edit_admin_page_path(page)
         %td= truncate page.body, length: 100
@@ -24,3 +24,5 @@
 %br
 
 = link_to 'New Page', new_admin_page_path, class: "btn btn-primary"
+-Type.all.each do |type|
+  = link_to "New #{type.name}", new_admin_page_path(type: type.name), class: "btn btn-success"
