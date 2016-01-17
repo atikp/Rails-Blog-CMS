@@ -5,6 +5,7 @@ module ApplicationHelper
     else
       "pages/#{page.id}"
     end
+    
     root_path + path
     end
   def url_for_menu_item menu_item

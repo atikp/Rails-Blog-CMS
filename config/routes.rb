@@ -1,23 +1,29 @@
 Rails.application.routes.draw do
 
+  devise_for :users
+  root to: redirect(Setting.where(key: "homepage").first.value)
   mount Ckeditor::Engine => '/ckeditor'
+  
   resources :categories, only: [:show]
-  resources :pages, only:[:show]
+  resources :pages, only: [:show]
+  
   namespace :admin do
     resources :types, except: [:show]
     resources :menus, except: [:show]
     resources :pages
     resources :categories
+    get "settings" => "settings#index"
+    put "settings" => "settings#update"
   end
   
   Page.where.not("slug", nil).all.each do |page|
-    get "/#{page.slug}", controller: "pages", action: "show", id:page.id
+    get "/#{page.slug}", controller: "pages", action: "show", id: page.id
   end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'welcome#index'
+  #root to: redirect(Setting.where(key: "homepage").first.value)
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

@@ -2,10 +2,10 @@
 
 one:
   page_id: 
-  field_definiton_id: 
+  field_definition_id: 
   value: MyString
 
 two:
   page_id: 
-  field_definiton_id: 
+  field_definition_id: 
   value: MyString

@@ -1,6 +1,7 @@
 =form_for ["admin", @type] do |f|
   %p
     =f.text_field :name, placeholder: "Name", class: "form-control input-lg"
+  
   %h3 Custom Fields
   
   =f.fields_for :field_definitions do |c|
@@ -10,4 +11,3 @@
   
   %p
     =f.submit
-

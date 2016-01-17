@@ -1,14 +1,14 @@
-module Admin  
-  class TypesController < ApplicationController
+module Admin
+  class TypesController < AdminController
     def index
       @types = Type.all
     end
 
     def new
       @type = Type.new
-      3.times { @type.field_definitions.build } 
+      3.times { @type.field_definitions.build }
     end
-  
+
     def create
       @type = Type.new type_params
       if @type.save
@@ -18,7 +18,6 @@ module Admin
       end
     end
 
-  
     def update
       @type = Type.find params[:id]
       if @type.update_attributes type_params
@@ -27,24 +26,25 @@ module Admin
         render :edit
       end
     end
-    
+
     def edit
       @type = Type.find params[:id]
-      10.times {@type.field_definitions.build}
+      3.times { @type.field_definitions.build }
     end
-  
+
     def destroy
       @type = Type.find params[:id]
       if @type.destroy
-        redirect_to admin_types_path, notice: "Type deleted!"
+        redirect_to admin_types_path, notice: "Type deleted."
       else
-        redirect_to admin_types_path, alert: "Type was NOT deleted!!!!"   
+        redirect_to admin_types_path, alert: "Type was not deleted."
       end
     end
-    
+
     protected
+
     def type_params
-      params.require(:type).permit(:name, :field_definitions_attributes => [:key, :id])
+      params.require(:type).permit(:name, :field_definitions_attributes => [ :key, :id] )
     end
   end
 end
