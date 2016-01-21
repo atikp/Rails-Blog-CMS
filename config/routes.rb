@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   
   resources :categories, only: [:show]
   resources :pages, only: [:show]
-  
+   
   namespace :admin do
     resources :types, except: [:show]
     resources :menus, except: [:show]
