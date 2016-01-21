@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
   devise_for :users
-  root to: redirect(Setting.where(key: "homepage").first.value)
+  root to: to => "categories#show", :id => '2' #redirect(Setting.where(key: "homepage").first.value)
   mount Ckeditor::Engine => '/ckeditor'
   
   resources :categories, only: [:show]
