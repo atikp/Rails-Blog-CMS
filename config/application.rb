@@ -26,5 +26,6 @@ module Blog
     config.autoload_paths += %W(#{config.root}/app/models/ckeditor)
     config.assets.precompile += %w( theme-default.css )
     config.assets.precompile += %w( theme-image.css )
+    config.assets.initialize_on_precompile = false
   end
 end
