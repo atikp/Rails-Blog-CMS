@@ -21,7 +21,7 @@ Rails.application.routes.draw do
   end
   
   begin
-    Page.where.not("slug", nil).all.each do |page|
+    Page.where.not(slug: nil).all.each do |page|
       get "/#{page.slug}", controller: "pages", action: "show", id: page.id
     end
   rescue
