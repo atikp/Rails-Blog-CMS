@@ -62,7 +62,7 @@ module Admin
     def destroy
       @page.destroy
       respond_to do |format|
-        format.html { redirect_to admin_pages_url, notice: 'Page was successfully destroyed.' }
+        format.html { redirect_to admin_page_path(@page), notice: 'Page was successfully destroyed.' }
         format.json { head :no_content }
       end
     end
