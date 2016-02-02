@@ -4,7 +4,7 @@ module ApplicationHelper
       page.slug
     else
       "pages/#{page.id}"
-    end
+  end
     
     root_path + path
     end
@@ -13,6 +13,6 @@ module ApplicationHelper
       menu_item.url
     else
       root_path + menu_item.url
-  end
+    end
   end
 end
